@@ -8,8 +8,8 @@
 		"dev": "vite --port 3000 --host",
 		"build": "tsc -b && vite build",
 		"lint": "eslint .",
-		"preview": "vite preview",
-		"deploy": "pnpm build  && gh-pages -d build"
+		"predeploy": "npm run build",
+		"deploy": "gh-pages -d build"
 	},
 	"dependencies": {
 		"@vanilla-extract/css": "^1.17.1",
