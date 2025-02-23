@@ -39,5 +39,6 @@
 		"vite": "^6.1.0",
 		"vite-tsconfig-paths": "^5.1.4"
 	},
-	"license": "MIT"
+	"license": "MIT",
+	"packageManager": "yarn@4.6.0"
 }
