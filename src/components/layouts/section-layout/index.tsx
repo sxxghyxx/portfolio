@@ -12,7 +12,6 @@ export const SectionLayout = ({
 	backGround,
 	id,
 }: ISectionLayout) => {
-	console.log(className)
 	return (
 		<section
 			id={id}

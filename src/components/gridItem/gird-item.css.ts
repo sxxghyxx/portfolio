@@ -120,8 +120,6 @@ const threeWrapper = style({
 	flexDirection: "column",
 	gap: "0.5rem",
 	marginTop: "1.2rem",
-	borderTop: `1px solid`,
-
 	"@media": {
 		[mobile]: {
 			fontSize: vars.fontSizes.small,

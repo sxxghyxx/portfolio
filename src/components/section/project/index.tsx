@@ -1,6 +1,7 @@
 import { GridItemBox } from "@/components/gridItem"
 import { SectionLayout } from "@/components/layouts"
 import { Title } from "@/components/title"
+
 import { commonPaddingWrapper } from "@/styles/theme.css"
 
 export const ProjectSection = () => {

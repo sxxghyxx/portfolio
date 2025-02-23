@@ -2,14 +2,29 @@ import { SectionLayout } from "@/components/layouts"
 import { Title } from "@/components/title"
 import styles from "./about.css"
 import { commonPaddingWrapper } from "@/styles/theme.css"
+import { useInView } from "@/hooks/useInView"
+
 export const AboutSection = () => {
+	const { ref: ref1, inView: inView1 } = useInView({
+		threshold: 0.5,
+		triggerOnce: true,
+	})
+	const { ref: ref2, inView: inView2 } = useInView({
+		threshold: 0.5,
+		triggerOnce: true,
+	})
+	const { ref: ref3, inView: inView3 } = useInView({
+		threshold: 0.5,
+		triggerOnce: true,
+	})
+
 	return (
 		<SectionLayout id="about" className={commonPaddingWrapper}>
 			<Title label="about" color="primary" hasUnderLine />
-			<h3 className={styles.aboutTitle}>
+			<h3 className={styles.aboutTitle} ref={ref1} style={inView1}>
 				Code with efficiency, grow with flexibility
 			</h3>
-			<div className={styles.aboutText}>
+			<div className={styles.aboutText} ref={ref2} style={inView2}>
 				저는 코드를 작성할 때 <b className={styles.boldText}>효율성과 확장성</b>
 				을 최우선으로 고려합니다. 단순히 동작하는 코드에 그치지 않고,
 				유지보수성과 확장성을 염두에 두며 개발하는 것이 더 나은 소프트웨어를
@@ -27,10 +42,10 @@ export const AboutSection = () => {
 				<b className={styles.boldText}>리서치와 학습</b>을 끊임없이 병행하며, 더
 				나은 방법을 빠르게 적용하는 태도를 노력합니다.
 			</div>
-			<div className={styles.contactWrapper}>
-				<a href="https://github.com/suxghyxn" className={styles.iconWrapper}>
+			<div className={styles.contactWrapper} ref={ref3} style={inView3}>
+				<a href="https://github.com/sxxghyxx" className={styles.iconWrapper}>
 					<img src="/github-logo.png" />
-					<span className={styles.boldText}>@suxghyxn</span>
+					<span className={styles.boldText}>@sxxghyxx</span>
 				</a>
 				<a href="mailto:sxxghyxx@gmail.com" className={styles.iconWrapper}>
 					<img src="/email.png" />

@@ -1,6 +1,7 @@
 import { SectionLayout } from "@/components/layouts"
 import styles from "./intro.css"
 import { useEffect, useState } from "react"
+import { useInView } from "@/hooks/useInView"
 
 export const IntroSection = () => {
 	return (
@@ -22,9 +23,17 @@ interface IContactDetails {
 }
 
 const IntroHeader = () => {
+	const { ref: ref1, inView: inView1 } = useInView({
+		threshold: 0.5,
+		triggerOnce: true,
+	})
 	const ContactDetails = ({ label, value }: IContactDetails) => {
 		return (
-			<div className={styles.contactDetailItemWrapper}>
+			<div
+				className={styles.contactDetailItemWrapper}
+				ref={ref1}
+				style={inView1}
+			>
 				<p className={styles.contactDetailItemLabel}>{label}</p>
 				<p className={styles.contactDetailItemValue}>{value}</p>
 			</div>
@@ -40,8 +49,13 @@ const IntroHeader = () => {
 			})
 		}
 	}
+
+	const { ref: ref2, inView: inView2 } = useInView({
+		threshold: 0.5,
+		triggerOnce: true,
+	})
 	return (
-		<div className={styles.introHeadWrapper}>
+		<div className={styles.introHeadWrapper} style={inView2} ref={ref2}>
 			<div className={styles.contactDetailWrapper}>
 				{ContactDetail.map((v) => (
 					<ContactDetails {...v} key={v.label} />

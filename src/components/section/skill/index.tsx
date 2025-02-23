@@ -2,6 +2,7 @@ import { SectionLayout } from "@/components/layouts"
 import { Title } from "@/components/title"
 import styles from "./skills.css"
 import { commonPaddingWrapper } from "@/styles/theme.css"
+import { useInView } from "@/hooks/useInView"
 
 const skills: ISkillBoxProps["item"][] = [
 	{ language: ["TypeScript", "JavaScript", "Golang", "Python"] },
@@ -39,8 +40,12 @@ interface ISkillBoxProps {
 }
 
 const SkillBox = ({ item }: ISkillBoxProps) => {
+	const { ref: ref1, inView: inView1 } = useInView({
+		threshold: 0.5,
+		triggerOnce: true,
+	})
 	return (
-		<div className={styles.skillBoxWrapper}>
+		<div className={styles.skillBoxWrapper} style={inView1} ref={ref1}>
 			{Object.keys(item).map((key) => (
 				<div key={key} className={styles.skillBoxContainer}>
 					<h3 className={styles.skillTitle}>{key}</h3>

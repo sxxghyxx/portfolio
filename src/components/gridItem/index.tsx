@@ -1,3 +1,4 @@
+import { useInView } from "@/hooks/useInView"
 import styles from "./gird-item.css"
 interface IGridItemBox {
 	keyLabel: string
@@ -41,11 +42,24 @@ interface IItem {
 	}
 }
 const Item = ({ first, second, third }: IItem) => {
+	const { ref: ref1, inView: inView1 } = useInView({
+		threshold: 0.5,
+		triggerOnce: true,
+	})
+	const { ref: ref2, inView: inView2 } = useInView({
+		threshold: 0.5,
+		triggerOnce: true,
+	})
+
+	const { ref: ref3, inView: inView3 } = useInView({
+		threshold: 0.5,
+		triggerOnce: true,
+	})
 	return (
 		<>
 			<div className={styles.gridWrapper}>
 				{first && (
-					<div>
+					<div ref={ref1} style={inView1}>
 						{first.title && (
 							<div className={styles.firstText}>{first.title}</div>
 						)}
@@ -55,7 +69,11 @@ const Item = ({ first, second, third }: IItem) => {
 				{second && (
 					<>
 						{second.itemType === "text" && (
-							<div className={styles.secondItemWrapper}>
+							<div
+								className={styles.secondItemWrapper}
+								ref={ref2}
+								style={inView2}
+							>
 								{Object.entries(second.items).map(([key, value]) => (
 									<div
 										key={key}
@@ -70,7 +88,11 @@ const Item = ({ first, second, third }: IItem) => {
 							</div>
 						)}
 						{second.itemType === "label" && (
-							<div className={styles.secondItemWrapper}>
+							<div
+								className={styles.secondItemWrapper}
+								ref={ref2}
+								style={inView2}
+							>
 								{Object.entries(second.items).map(([key, value]) => (
 									<div
 										key={key}
@@ -94,7 +116,7 @@ const Item = ({ first, second, third }: IItem) => {
 				)}
 			</div>
 			{third && (
-				<>
+				<div ref={ref3} style={inView3}>
 					<ul className={styles.threeWrapper}>
 						{third.items.map((v) => (
 							<li className={styles.threeItem} key={v}>
@@ -102,7 +124,7 @@ const Item = ({ first, second, third }: IItem) => {
 							</li>
 						))}
 					</ul>
-				</>
+				</div>
 			)}
 		</>
 	)
@@ -113,17 +135,28 @@ interface ISubTitle {
 }
 
 const Title = ({ label }: ISubTitle) => {
-	return <h4 className={styles.gridTitleLabel}>{label}</h4>
+	const { ref: ref, inView: inView } = useInView({
+		threshold: 0.5,
+		triggerOnce: true,
+	})
+	return (
+		<h4 ref={ref} style={inView} className={styles.gridTitleLabel}>
+			{label}
+		</h4>
+	)
 }
 const DatePeriod = ({
 	date,
 }: {
 	date: { endDate: string | null; startDate: string }
 }) => {
+	const { ref: ref, inView: inView } = useInView({
+		threshold: 0.5,
+		triggerOnce: true,
+	})
 	const EndDate = typeof date.endDate === "string" ? date.endDate : "~ing"
-	console.log(EndDate)
 	return (
-		<div className={styles.periodCSS}>
+		<div className={styles.periodCSS} ref={ref} style={inView}>
 			<span>{date.startDate}</span> - <span>{EndDate}</span>
 		</div>
 	)
