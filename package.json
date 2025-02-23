@@ -6,6 +6,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite --port 3000 --host",
+		"start": "vite preview",
 		"build": "tsc -b && vite build",
 		"lint": "eslint .",
 		"deploy": "gh-pages -d dist"

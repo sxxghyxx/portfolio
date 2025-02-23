@@ -12,7 +12,7 @@ export const IntroSection = () => {
 	)
 }
 
-const LINK_LIST = ["about", "skills", "resume", "project", "career"]
+const LINK_LIST = ["about", "skills", "resume", "project"]
 const ContactDetail: IContactDetails[] = [
 	{ label: "contact", value: "sxxghyxx@gmail.com" },
 	{ label: "github", value: "https://github.com/suxghyxn" },
